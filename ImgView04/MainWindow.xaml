@@ -1,0 +1,33 @@
+﻿<Window x:Class="ImgView04.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImgView04"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel
+        x:Name="dockPanel1" >
+        <StackPanel
+            x:Name="stackPanel1"
+            Width="400"
+            DockPanel.Dock="Left"
+            Margin="10" >
+            <ListView
+                x:Name="listview1"
+                DisplayMemberPath="Name"
+                SelectionChanged="ListView1_SelectionChanged" />
+            <WrapPanel
+                Orientation="Horizontal"
+                Margin="10">
+                <Button Content="開始" Click="Button_Start" />
+                <Button Content="削除" Click="Button_Delete"/>
+                <Button Content="上へ" Click="Button_Up" />
+                <Button Content="下へ" Click="Button_Down" />
+            </WrapPanel>
+        </StackPanel>
+        <Image
+            x:Name="image1"
+            Stretch="UniForm"/> 
+    </DockPanel>
+</Window>
