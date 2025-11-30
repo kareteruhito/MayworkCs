@@ -12,3 +12,10 @@ C# で作成したプロジェクトです。
 
 ```PowerShell
 dotnet build
+
+## プロジェクト
+
+・MayworkCs.ConsoleApp ... コンソールアプリ
+・ImgView04 ... 画像ビューア(ZIPファイル)
+・MayworkCs.WPFApp ... WPFアプリ(NoXAML,コードビハインド)
+・MayworkCs.WPFLib ... WPFライブラリ(NoXAML,ヘルパークラスライブラリ)
