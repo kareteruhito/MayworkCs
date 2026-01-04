@@ -32,7 +32,7 @@ public partial class App : Application
         else
         {
             // クライアントとして起動
-            string message = e.Args.FirstOrDefault() ?? "(no argument)";
+            string message = e.Args.FirstOrDefault() ?? "";
             IpcClient.Send(message);
 
             Shutdown();
