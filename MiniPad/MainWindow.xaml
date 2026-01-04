@@ -1,0 +1,51 @@
+﻿<Window x:Class="MiniPad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiniPad"
+        mc:Ignorable="d"
+        Title="MiniPad"
+        Width="900" Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <!-- メニュー -->
+        <Menu DockPanel.Dock="Top">
+            <Menu.Resources>
+                <Style TargetType="MenuItem">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </Menu.Resources>
+
+            <MenuItem Header="ファイル">
+                <MenuItem Header="開く"
+                          Command="Open"
+                          InputGestureText="Ctrl+O"/>
+                <MenuItem Header="上書き保存"
+                          Command="Save"
+                          InputGestureText="Ctrl+S"/>
+                <MenuItem Header="保存"
+                          Command="SaveAs"
+                          InputGestureText="Ctrl+Shift+S"/>
+                <Separator/>
+                <MenuItem Header="終了"
+                          Command="Close"
+                          InputGestureText="Alt+F4"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- エディタ本体 -->
+        <TextBox
+            x:Name="Editor"
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            TextWrapping="NoWrap"
+            FontFamily="Consolas"
+            FontSize="16"/>
+    </DockPanel>
+</Window>
