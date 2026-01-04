@@ -19,3 +19,4 @@ dotnet build
 ・ImgView04 ... 画像ビューア(ZIPファイル)
 ・MayworkCs.WPFApp ... WPFアプリ(NoXAML,コードビハインド)
 ・MayworkCs.WPFLib ... WPFライブラリ(NoXAML,ヘルパークラスライブラリ)
+・ImageLancher ... 画像プレビュー機能付き・画像編集アプリランチャー(WPF)
