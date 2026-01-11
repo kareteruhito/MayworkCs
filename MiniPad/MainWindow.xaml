@@ -40,12 +40,13 @@
         <!-- エディタ本体 -->
         <TextBox
             x:Name="Editor"
+            Padding="16,16"
             AcceptsReturn="True"
             AcceptsTab="True"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto"
             TextWrapping="NoWrap"
             FontFamily="Consolas"
-            FontSize="16"/>
+            FontSize="18"/>
     </DockPanel>
 </Window>

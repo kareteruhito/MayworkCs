@@ -21,3 +21,4 @@ dotnet build
 ・MayworkCs.WPFLib ... WPFライブラリ(NoXAML,ヘルパークラスライブラリ)
 ・ImageLancher ... 画像プレビュー機能付き・画像編集アプリランチャー(WPF)
 ・MiniPad ... メモ帳(WPF)
+・BookMarker ... ローカルファイルのブックマーク(WPF)
