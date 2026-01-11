@@ -1,0 +1,188 @@
+﻿<Window x:Class="BookMarker.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookMarker"
+        mc:Ignorable="d"
+        FontSize="18"
+        Title="BookMarker" Height="1200" Width="1200">
+ 
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+
+
+    <DockPanel>
+
+        <!-- メニュー ここから-->
+        <Menu
+            DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <Separator/>
+                <MenuItem
+                    Header="_Exit"
+                    Command="Close"
+                    InputGestureText="Alt+F4" />
+            </MenuItem>
+            <MenuItem Header="_Category">
+                <MenuItem
+                    Header="_Add"
+                    Command="{Binding CategoryAddCommand}"
+                    InputGestureText="Alt+A" />
+                <MenuItem
+                    Header="_Update"
+                    Command="{Binding CategoryUpdateCommand}"
+                    InputGestureText="Alt+B" />
+                <MenuItem
+                    Header="_Delete"
+                    Command="{Binding CategoryDeleteCommand}"
+                    InputGestureText="Alt+C" />
+            </MenuItem>
+        </Menu>
+        <!-- メニュー ここまで-->
+
+        <!-- ステータスバー -->
+        <StatusBar
+            DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText"
+                           Text="{Binding StatusTextArea}"/>
+            </StatusBarItem>
+        </StatusBar>
+        <!-- ステータスバー ここまで-->
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>            
+
+            <DockPanel
+                Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>            
+                    <!-- 左側カテゴリ ここから -->
+                    <ListView
+                        Grid.Column="0"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding SelectedCategory}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    Header="名前"
+                                    Width="300"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <!-- 左側カテゴリ ここまで -->
+
+                    <!-- 左右の仕切り ここから-->
+                    <GridSplitter
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch" />  
+                    <!-- 左右の仕切り ここまで-->
+
+                    <!-- 右側ファイルリストビュー ここから -->
+                    <ListView
+                        x:Name="BookmarkListView"
+                        ItemsSource="{Binding BookmarksView}"
+                        SelectedItem="{Binding SelectedBookmark}"
+                        AllowDrop="True"
+                        Grid.Column="2">
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter
+                                    Property="HorizontalContentAlignment"
+                                    Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="160">
+                                    <GridViewColumnHeader
+                                        Content="名前"
+                                        HorizontalContentAlignment="Left"/>
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <Binding Path="Name"/>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                                <GridViewColumn Width="300">
+                                    <GridViewColumnHeader
+                                        Content="コメント"
+                                        HorizontalContentAlignment="Left"/>
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <Binding Path="DisplayComment"/>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100">
+                                    <GridViewColumnHeader
+                                        Content="カテゴリ"
+                                        HorizontalContentAlignment="Left"/>
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <Binding Path="Category"/>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumnHeader
+                                        Content="場所"
+                                        HorizontalContentAlignment="Left"/>
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <Binding Path="Location"/>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </DockPanel>
+
+            <!-- 上下の仕切り ここから-->
+            <GridSplitter
+                Grid.Row="1"
+                HorizontalAlignment="Stretch" />  
+            <!-- 上下の仕切り ここまで-->
+
+            <DockPanel
+                Grid.Row="2">
+                <DockPanel
+                    DockPanel.Dock="Right">
+                    <StackPanel
+                        DockPanel.Dock="Bottom"
+                        Orientation="Horizontal">
+                        <ComboBox
+                            ItemsSource="{Binding Categories}"
+                            SelectedItem="{Binding SubSelectedCategory}"
+                            DisplayMemberPath="Name"
+                            />
+                        <Button
+                            Content="Del"
+                            Command="{Binding BookmarkDeleteCommand}"/>
+                    </StackPanel>
+                    <TextBox
+                        Width="450"
+                        Text="{ Binding SelectedBookmark.Comment,
+                                Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"
+                        AcceptsReturn="True"
+                        
+                    />
+                </DockPanel>
+                <Image Source="{Binding PreviewImage}"/>
+            </DockPanel>
+
+        </Grid>
+    </DockPanel>
+
+</Window>
