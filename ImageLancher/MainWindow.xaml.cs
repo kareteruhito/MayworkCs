@@ -2,8 +2,11 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
+using NxLib.Helper;
 
 namespace ImageLancher;
 
@@ -21,6 +24,8 @@ public partial class MainWindow : Window
         _settings = SettingsLoader.Load();
 
         BuildExternalToolMenu();
+
+        ImageView.OnWheelZoom();
     }
     public void ReceiveImage(string filePath)
     {
@@ -44,14 +49,32 @@ public partial class MainWindow : Window
 
         _bitmap = bmp;
         ImageView.Source = bmp;
+
+        double scale = 1200.0d / bmp.Height;
+        if (scale > 8.0) scale = 8.0;
+        if (scale < 0.1) scale = 0.1;
+        var st = new ScaleTransform(scale, scale);
+        ImageView.LayoutTransform = st;
+
+        Title = $"{scale}";
     }
 
     // 表示切替
-    private void FitToWindow_Click(object sender, RoutedEventArgs e)
-        => ImageView.Stretch = Stretch.Uniform;
-
+    private void MaxSize_Click(object sender, RoutedEventArgs e)
+    {
+        var st = new ScaleTransform(8.0, 8.0);
+        ImageView.LayoutTransform = st;
+    }
     private void ActualSize_Click(object sender, RoutedEventArgs e)
-        => ImageView.Stretch = Stretch.None;
+    {
+        var st = new ScaleTransform(1.0, 1.0);
+        ImageView.LayoutTransform = st;
+    }
+    private void MinSize_Click(object sender, RoutedEventArgs e)
+    {
+        var st = new ScaleTransform(0.1, 0.1);
+        ImageView.LayoutTransform = st;
+    }
 
     // クリップボード
     private void CopyImage_Click(object sender, RoutedEventArgs e)
