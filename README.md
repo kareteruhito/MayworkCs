@@ -23,5 +23,4 @@ dotnet build
 ・MiniPad ... メモ帳(WPF)
 ・BookMarker ... ローカルファイルのブックマーク(WPF)
 ・ImageThumb ... 画像のサムネイル(WPF)
-・MwWpfHelpers ... WPF用のHelper集
-・MwUtilities ... 汎用Utility集
+・MwLib ... WPF用HelperとUtility集
