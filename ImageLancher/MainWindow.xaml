@@ -8,37 +8,41 @@
 
     <Grid
         Background="Black">
-        <ScrollViewer
+        <ScrollViewer x:Name="ScrollViewerRoot"
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollBarVisibility="Auto">
-            <Image
-                x:Name="ImageView"
-                Stretch="None"
-                RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Image.ContextMenu>
-                    <ContextMenu
-                        x:Name="ImageContextMenu">
-                        <MenuItem
-                            Header="最大で表示"
-                            Click="MaxSize_Click"/>
-                        <MenuItem
-                            Header="原寸大で表示"
-                            Click="ActualSize_Click"/>
-                        <MenuItem
-                            Header="最小で表示"
-                            Click="MinSize_Click"/>
-                        <Separator/>
-                        <MenuItem
-                            Header="画像をコピー"
-                            Click="CopyImage_Click"/>
-                        <MenuItem
-                            Header="画像を貼り付け"
-                            Click="PasteImage_Click"/>
-                        <Separator/>
-                        <!-- 外部ツールはコードで追加 -->
-                    </ContextMenu>
-                </Image.ContextMenu>
-            </Image>
+            <Canvas x:Name="CanvasRoot">
+                <Canvas.Background>
+                    <SolidColorBrush Color="#333"/>
+                </Canvas.Background>
+                <Image x:Name="ImageView"
+                    Stretch="None"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Image.ContextMenu>
+                        <ContextMenu
+                            x:Name="ImageContextMenu">
+                            <MenuItem
+                                Header="最大で表示"
+                                Click="MaxSize_Click"/>
+                            <MenuItem
+                                Header="原寸大で表示"
+                                Click="ActualSize_Click"/>
+                            <MenuItem
+                                Header="最小で表示"
+                                Click="MinSize_Click"/>
+                            <Separator/>
+                            <MenuItem
+                                Header="画像をコピー"
+                                Click="CopyImage_Click"/>
+                            <MenuItem
+                                Header="画像を貼り付け"
+                                Click="PasteImage_Click"/>
+                            <Separator/>
+                            <!-- 外部ツールはコードで追加 -->
+                        </ContextMenu>
+                    </Image.ContextMenu>
+                </Image>
+            </Canvas>
         </ScrollViewer>
     </Grid>
 </Window>

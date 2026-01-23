@@ -1,12 +1,14 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using NxLib.Helper;
+using MwLib.Helpers;
+using MwLib.Utilities;
 
 namespace ImageLancher;
 
@@ -25,7 +27,10 @@ public partial class MainWindow : Window
 
         BuildExternalToolMenu();
 
-        ImageView.OnWheelZoom();
+        ScrollViewerPanHelper.AttachMiddleButtonPan(ScrollViewerRoot);
+        CanvasZoomHelper.AttachCtrlWheelZoom(ScrollViewerRoot, CanvasRoot);
+        ImageDropHelper.Attach(CanvasRoot, ImageView);
+
     }
     public void ReceiveImage(string filePath)
     {
@@ -33,36 +38,45 @@ public partial class MainWindow : Window
         if (string.IsNullOrEmpty(_filePath)) return;
         if (!File.Exists(_filePath)) return;
 
-        Dispatcher.Invoke(() =>
+        Dispatcher.Invoke(async () =>
         {
-            LoadImage(_filePath);
+            await LoadImage(_filePath);
         });
     }
-    private void LoadImage(string path)
+    private async Task LoadImage(string path)
     {
+        /*
         var bmp = new BitmapImage();
         bmp.BeginInit();
         bmp.UriSource = new Uri(path);
         bmp.CacheOption = BitmapCacheOption.OnLoad;
         bmp.EndInit();
         bmp.Freeze();
+        */
+        BitmapSource bmp = await BitmapUtil.LoadAsync(path);
 
         _bitmap = bmp;
         ImageView.Source = bmp;
+        CanvasRoot.Width = bmp.PixelWidth;
+        CanvasRoot.Height = bmp.PixelHeight;
 
+        /*
+        
         double scale = 1200.0d / bmp.Height;
-        if (scale > 8.0) scale = 8.0;
+        if (scale > 10.0) scale = 10.0;
         if (scale < 0.1) scale = 0.1;
+        */
+        double scale = 1.0;
         var st = new ScaleTransform(scale, scale);
         ImageView.LayoutTransform = st;
-
-        Title = $"{scale}";
+       
+        //Title = $"{scale}";
     }
 
     // 表示切替
     private void MaxSize_Click(object sender, RoutedEventArgs e)
     {
-        var st = new ScaleTransform(8.0, 8.0);
+        var st = new ScaleTransform(10.0, 10.0);
         ImageView.LayoutTransform = st;
     }
     private void ActualSize_Click(object sender, RoutedEventArgs e)
