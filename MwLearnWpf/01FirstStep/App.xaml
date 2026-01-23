@@ -1,0 +1,32 @@
+﻿<Application
+    x:Class="_01FirstStep.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:_01FirstStep">
+    <!-- 
+      x:Class 属性は、この XAML ファイルに対応するコードビハインド クラスを指定します。
+      xmlns 属性は、XAML 名前空間を定義します。
+      xmlns:x 属性は、XAML 固有の名前空間を定義します。
+      xmlns:local 属性は、アプリケーションのローカル名前空間を定義します。
+    -->
+
+    <!-- アプリ起動時に最初に表示する Window -->
+    <Application.StartupUri>
+        MainWindow.xaml
+    </Application.StartupUri>
+
+    <!-- アプリ全体で共有するリソース -->
+    <Application.Resources>
+
+        <!--
+            ここに Style / Brush / DataTemplate / ResourceDictionary などを記述します。
+
+            例:
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="4"/>
+            </Style>
+        -->
+
+    </Application.Resources>
+
+</Application>
