@@ -1,0 +1,95 @@
+﻿<Window
+    x:Class="_01FirstStep.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:_01FirstStep"
+    mc:Ignorable="d">
+
+    <!--
+        x:Class
+        ─────────────────────────────────────
+        この XAML ファイルに対応するコードビハインド クラスを指定します。
+        MainWindow.xaml.cs の
+
+            namespace _01FirstStep;
+            public partial class MainWindow : Window
+
+        と一致している必要があります。
+
+        xmlns
+        ─────────────────────────────────────
+        WPF 標準コントロール（Window / Grid / Button など）が
+        定義されている名前空間です。
+
+        xmlns:x
+        ─────────────────────────────────────
+        x:Name / x:Key / x:Class など、
+        XAML 固有の構文を使用するための名前空間です。
+
+        xmlns:d
+        ─────────────────────────────────────
+        デザイン時専用（Blend / Visual Studio 用）の名前空間です。
+        実行時には完全に無視されます。
+
+        xmlns:mc
+        ─────────────────────────────────────
+        Markup Compatibility 用の名前空間です。
+        新旧 XAML 仕様の互換性を保つために使用されます。
+
+        xmlns:local
+        ─────────────────────────────────────
+        このプロジェクト内のクラスを XAML から参照するための名前空間です。
+
+        mc:Ignorable="d"
+        ─────────────────────────────────────
+        d: で始まる属性を「無視してよい」と指定しています。
+        これによりデザイン専用属性が実行時にエラーになりません。
+    -->
+
+
+    <!-- ウィンドウタイトル（タイトルバーに表示される文字列） -->
+    <Window.Title>
+        MainWindow
+    </Window.Title>
+
+    <!-- ウィンドウの初期高さ（単位は device independent pixel） -->
+    <Window.Height>
+        450
+    </Window.Height>
+
+    <!-- ウィンドウの初期幅 -->
+    <Window.Width>
+        800
+    </Window.Width>
+
+
+    <!--
+        Grid
+        ─────────────────────────────────────
+        WPF で最も基本となるレイアウトパネルです。
+
+        ・縦横に分割できる
+        ・リサイズに強い
+        ・ほぼ全ての UI が配置可能
+
+        Window の直下には通常 Grid を置くのが定石です。
+    -->
+    <Grid>
+
+        <!--
+            今は中身が空ですが、ここに
+
+            - Button
+            - TextBox
+            - Image
+            - StackPanel
+            - Canvas
+
+            などを配置していきます。
+        -->
+
+    </Grid>
+
+</Window>
