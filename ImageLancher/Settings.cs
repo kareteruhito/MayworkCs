@@ -1,5 +1,8 @@
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using Microsoft.VisualBasic;
+using MwLib.Utilities;
 
 namespace ImageLancher;
 
@@ -23,13 +26,9 @@ public static class SettingsLoader
     {
         try
         {
-            var dir = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                AppName);
+            string dir = AppPathUtil.Roaming;
 
-            Directory.CreateDirectory(dir);
-
-            var path = Path.Combine(dir, "settings.json");
+            string path = AppPathUtil.SettingsFile;
 
             if (!File.Exists(path))
             {

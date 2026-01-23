@@ -3,7 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace MwWpfHelpers;
+using MwLib.Utilities;
+
+namespace MwLib.Helpers;
 
 public static class ImageDropHelper
 {
@@ -25,7 +27,7 @@ public static class ImageDropHelper
         e.Handled = true;
     }
 
-    private static void OnDrop(DragEventArgs e, FrameworkElement dropTarget, Image image)
+    private static async void OnDrop(DragEventArgs e, FrameworkElement dropTarget, Image image)
     {
         if (!HasImageFile(e))
             return;
@@ -33,12 +35,7 @@ public static class ImageDropHelper
         string path = ((string[])e.Data.GetData(DataFormats.FileDrop))
             .First();
 
-        var bmp = new BitmapImage();
-        bmp.BeginInit();
-        bmp.UriSource = new System.Uri(path);
-        bmp.CacheOption = BitmapCacheOption.OnLoad;
-        bmp.EndInit();
-        bmp.Freeze();
+        BitmapSource  bmp = await BitmapUtil.LoadAsync(path);
 
         image.Source = bmp;
         dropTarget.Width = bmp.PixelWidth;
