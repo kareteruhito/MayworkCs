@@ -21,3 +21,4 @@ dotnet build
 ・BookMarker ... ローカルファイルのブックマーク(WPF)
 ・ImageThumb ... 画像のサムネイル(WPF)
 ・MwLib ... WPF用HelperとUtility集
+・MwLeanWpf ... WPF入門
