@@ -1,0 +1,71 @@
+﻿<Window
+    x:Class="_02BasicLayout.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="_02BasicLayout Sample"
+    Width="800"
+    Height="450">
+
+    <Grid>
+
+        <!-- 列定義 -->
+        <Grid.ColumnDefinitions>
+
+            <!-- 左ペイン -->
+            <ColumnDefinition Width="200"/>
+
+            <!-- スプリッター -->
+            <ColumnDefinition Width="5"/>
+
+            <!-- 右ペイン（残りすべて） -->
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <!-- ===================== -->
+        <!-- 左ペイン（縦積み） -->
+        <!-- ===================== -->
+        <StackPanel Grid.Column="0"
+                    Orientation="Vertical"
+                    Margin="8">
+
+            <TextBlock Text="Left Pane" FontWeight="Bold" Margin="0 0 0 8"/>
+
+            <Button Content="Button 1" Margin="0 0 0 4"/>
+            <Button Content="Button 2" Margin="0 0 0 4"/>
+            <Button Content="Button 3" Margin="0 0 0 4"/>
+
+            <TextBox Text="TextBox" Margin="0 8 0 0"/>
+            <CheckBox Content="CheckBox" Margin="0 4 0 0"/>
+
+        </StackPanel>
+
+        <!-- ===================== -->
+        <!-- GridSplitter -->
+        <!-- ===================== -->
+        <GridSplitter Grid.Column="1"
+                       Width="5"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       Background="Gray"/>
+
+        <!-- ===================== -->
+        <!-- 右ペイン（横積み） -->
+        <!-- ===================== -->
+        <StackPanel Grid.Column="2"
+                    Orientation="Horizontal"
+                    Margin="8">
+
+            <TextBlock Text="Right Pane"
+                       FontWeight="Bold"
+                       Margin="0 0 12 0"/>
+
+            <Button Content="A" Margin="0 0 4 0"/>
+            <Button Content="B" Margin="0 0 4 0"/>
+            <Button Content="C" Margin="0 0 4 0"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

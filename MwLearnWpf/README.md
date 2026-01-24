@@ -12,9 +12,11 @@
 
 ## 目次
 
+1.[はじめの一歩](./01FirstStep/)
+2.[レイアウトの基本](./02BasicLayout/)
 
 ## 動作環境
 
-- .NET 8
+- .NET 10.0
 - Windows 11
 - VScode
