@@ -4,7 +4,7 @@ C# で作成したプロジェクトです。
 
 ## 開発環境
 
-- .NET SDK: 8.0.0  
+- .NET SDK: 8.0.0 ～ 10.0
 - 開発言語: C#  
 - 対応OS: Windows
 
@@ -22,3 +22,4 @@ dotnet build
 ・ImageThumb ... 画像のサムネイル(WPF)
 ・MwLib ... WPF用HelperとUtility集
 ・MwLeanWpf ... WPF入門
+・SimpleLancherEx ... シンプルアプリランチャー拡張版

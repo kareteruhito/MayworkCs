@@ -1,0 +1,44 @@
+<UserControl x:Class="SimpleLauncherEx.TabViews.AppLancherTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <ListView
+            x:Name="List"
+            Margin="8"
+            ItemsSource="{Binding State.Apps}"
+            SelectedItem="{Binding State.SelectedApp, Mode=TwoWay}"
+            AllowDrop="True"
+            SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter
+                        Property="FontSize"
+                        Value="14"/>
+                    <Setter
+                        Property="Padding"
+                        Value="4"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn
+                        Header="アイコン"
+                        Width="48">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image
+                                    Source="{Binding Icon}"
+                                    Width="24" Height="24"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn
+                        Header="名前"
+                        Width="300"
+                        DisplayMemberBinding="{Binding DisplayName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

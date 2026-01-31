@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MwLib.Mvvm;
+namespace SimpleLauncher2.Mvvm;
 
 public abstract class ViewModelBase : INotifyPropertyChanged
 {

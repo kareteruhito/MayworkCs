@@ -1,3 +1,4 @@
+// ScrollViewer の中で中ボタンドラッグによるパン操作を可能にするヘルパー。
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;

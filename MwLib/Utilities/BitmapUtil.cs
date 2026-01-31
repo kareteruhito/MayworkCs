@@ -1,3 +1,4 @@
+// ビットマップユーティリティ
 using System.IO;
 using System.Windows.Media.Imaging;
 

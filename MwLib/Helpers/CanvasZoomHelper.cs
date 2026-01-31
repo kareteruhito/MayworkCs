@@ -1,3 +1,4 @@
+// Canvas 上での Ctrl + マウスホイールズームをサポートするヘルパー。
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;

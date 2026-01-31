@@ -1,7 +1,7 @@
 // アプリケーション固有の保存パスを一元管理する Utility。
 using System.Reflection;
 
-namespace MwLib.Utilities;
+namespace SimpleLauncher2.Utilities;
 
 public static class AppPathUtil
 {
