@@ -1,3 +1,4 @@
+// 汎用的な RelayCommand 実装。
 using System.Windows.Input;
 
 namespace MwLib.Mvvm;

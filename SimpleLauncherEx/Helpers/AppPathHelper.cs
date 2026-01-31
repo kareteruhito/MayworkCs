@@ -1,9 +1,9 @@
-// アプリケーション固有の保存パスを一元管理する Utility。
+// アプリケーション固有の保存パスを一元管理する Helper。
 using System.Reflection;
 
-namespace MwLib.Utilities;
+namespace SimpleLauncherEx.Helpers;
 
-public static class AppPathUtil
+public static class AppPathHelper
 {
     /// アプリケーション名。
     public static string AppName { get; } = GetDefaultAppName();
@@ -12,7 +12,7 @@ public static class AppPathUtil
     // static ctor
     // ------------------------------------------------------------
 
-    static AppPathUtil()
+    static AppPathHelper()
     {
         EnsureDirectories();
     }
