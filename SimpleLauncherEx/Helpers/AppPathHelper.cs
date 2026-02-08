@@ -1,7 +1,7 @@
 // アプリケーション固有の保存パスを一元管理する Helper。
 using System.Reflection;
 
-namespace SimpleLauncherEx.Helpers;
+namespace Maywork.WPF.Helpers;
 
 public static class AppPathHelper
 {

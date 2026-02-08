@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
-using SimpleLauncherEx.Workers;
-using SimpleLauncherEx.Helpers;
+using Maywork.Utilities;
+using Maywork.WPF.Helpers;
 
 namespace SimpleLauncherEx;
 

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace SimpleLauncherEx.Helpers;
+namespace Maywork.WPF.Helpers;
 
 public abstract class ViewModelBase : INotifyPropertyChanged
 {

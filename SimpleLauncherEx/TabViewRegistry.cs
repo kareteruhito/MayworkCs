@@ -1,4 +1,4 @@
-using SimpleLauncherEx.TabViews;
+using SimpleLauncherEx.Views;
 
 namespace SimpleLauncherEx;
 
@@ -6,7 +6,9 @@ public static class TabViewRegistry
 {
     public static IReadOnlyList<Func<ITabView>> Tabs { get; } =
         [
-            () => new AppLancherTabView(),
-            () => new MemoPadTabView(),
+            () => new AppLancherView(),
+            () => new ScratchPadView(),
+            () => new BookMarkerView(),
+            () => new FileManagerView(),
         ];
 }

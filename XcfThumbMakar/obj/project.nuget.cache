@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "yjLgd6FkfJU=",
+  "success": true,
+  "projectFilePath": "J:\\git\\MayworkCs\\XcfThumbMakar\\XcfThumbMakar.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\karet\\.nuget\\packages\\magick.net-q8-anycpu\\14.10.2\\magick.net-q8-anycpu.14.10.2.nupkg.sha512",
+    "C:\\Users\\karet\\.nuget\\packages\\magick.net.core\\14.10.2\\magick.net.core.14.10.2.nupkg.sha512",
+    "C:\\Users\\karet\\.nuget\\packages\\opencvsharp4\\4.11.0.20250507\\opencvsharp4.4.11.0.20250507.nupkg.sha512",
+    "C:\\Users\\karet\\.nuget\\packages\\opencvsharp4.runtime.win\\4.11.0.20250507\\opencvsharp4.runtime.win.4.11.0.20250507.nupkg.sha512"
+  ],
+  "logs": []
+}

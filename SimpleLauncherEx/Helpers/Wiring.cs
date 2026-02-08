@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace SimpleLauncherEx.Helpers;
+namespace Maywork.WPF.Helpers;
 public static class Wiring
 {
     /*

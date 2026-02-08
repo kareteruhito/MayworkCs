@@ -27,7 +27,20 @@ public partial class MainWindow : Window
             TabHost.Items.Add(tab);
         }
         TabHost.SelectedItem = firstTab;
+
+        this.Closed += (_, __) =>
+        {
+            foreach(TabItem item in TabHost.Items)
+            {
+                var obj = item.Content;
+                if (obj is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
+            }
+        };
     }
+
 }
 
 // mkdir C:\Users\karet\Tools\SimpleLauncherEx

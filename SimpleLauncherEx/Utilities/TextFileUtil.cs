@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace SimpleLauncherEx.Utilities;
+namespace Maywork.Utilities;
 
 public static class TextFileUtil
 {

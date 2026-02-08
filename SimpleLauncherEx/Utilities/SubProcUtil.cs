@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace SimpleLauncherEx.Utilities;
+namespace Maywork.Utilities;
 
 public static class SubProcUtil
 {

@@ -1,0 +1,72 @@
+<UserControl x:Class="SimpleLauncherEx.Views.BookMarkerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontSize="14">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- リストビュー -->
+            <RowDefinition Height="*"/>
+            <!-- テキストエリア -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>        
+        
+        <!-- リストビュー -->
+        <Grid Grid.Row="0"
+              x:Name="Grid0">
+            <ListView 
+                x:Name="List"
+                Margin="8"
+                SelectionMode="Single">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter
+                            Property="FontSize"
+                            Value="14"/>
+                        <Setter
+                            Property="Padding"
+                            Value="4"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn
+                            Header="名前"
+                            Width="140"
+                            DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn
+                            Header="コメント"
+                            Width="220"
+                            DisplayMemberBinding="{Binding DispComment}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <!-- テキストエリア -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <!-- ラベル -->
+                <RowDefinition Height="Auto"/>
+                <!-- テキストボックス -->
+                <RowDefinition Height="*"/>
+                <!-- パス -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                    <TextBlock>コメント</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox x:Name="TextBox1"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Text="{Binding SelectedItem.Comment, ElementName=List, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <TextBlock Grid.Row="2"
+                       Text="{Binding SelectedItem.FullName, ElementName=List}" />
+        </Grid>
+    </Grid>
+
+</UserControl>

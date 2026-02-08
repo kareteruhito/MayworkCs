@@ -23,3 +23,4 @@ dotnet build
 ・MwLib ... WPF用HelperとUtility集
 ・MwLeanWpf ... WPF入門
 ・SimpleLancherEx ... シンプルアプリランチャー拡張版
+・XcfThumbMakar ... サムネイル画像作成バッチ
