@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -7,8 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using MwLib.Helpers;
-using MwLib.Utilities;
+using Maywork.WPF.Helpers;
 
 namespace ImageLancher;
 
@@ -21,16 +21,57 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
         IpcServer.MessageReceived += ReceiveImage;
 
         _settings = SettingsLoader.Load();
 
         BuildExternalToolMenu();
 
-        ScrollViewerPanHelper.AttachMiddleButtonPan(ScrollViewerRoot);
-        CanvasZoomHelper.AttachCtrlWheelZoom(ScrollViewerRoot, CanvasRoot);
-        ImageDropHelper.Attach(CanvasRoot, ImageView);
+        ImageScaleHelper.Attach(ScrollViewerRoot, CanvasRoot, ImageView);
 
+        // ドラックアンドドロップ
+        Wiring.AcceptFilesPreview(Grid0, async files=>
+        {
+            var file = files.FirstOrDefault();
+            if (file is null) return;
+
+            await LoadImage(file);
+        }, ".jpeg", ".jpg", ".png", ".bmp", ".webp"); // ←対応画像拡張子指定
+
+
+        this.PreviewMouseDown += async (_, e) =>
+        {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                // 左ボタン以外
+                return;
+            }            
+            var path = ImageView.Tag as string;
+            if (path is null) return;
+
+            if (!File.Exists(path)) return;
+
+            string dir = Path.GetDirectoryName(path) ?? "";
+            if (string.IsNullOrEmpty(dir)) return;
+
+            var exts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                ".jpeg", ".jpg", ".png", ".bmp", ".webp", ".gif"
+            };
+
+            var files = Directory.EnumerateFiles(dir)
+                .Where(f => exts.Contains(Path.GetExtension(f)))
+                .ToList();
+            int i = files.IndexOf(path);
+            if (i < (files.Count()-1))
+            {
+                i++;
+                string nextFile = files[i];
+                //Debug.Print(nextFile);
+                await LoadImage(nextFile);
+            }
+        };
     }
     public void ReceiveImage(string filePath)
     {
@@ -45,49 +86,69 @@ public partial class MainWindow : Window
     }
     private async Task LoadImage(string path)
     {
-        /*
-        var bmp = new BitmapImage();
-        bmp.BeginInit();
-        bmp.UriSource = new Uri(path);
-        bmp.CacheOption = BitmapCacheOption.OnLoad;
-        bmp.EndInit();
-        bmp.Freeze();
-        */
-        BitmapSource bmp = await BitmapUtil.LoadAsync(path);
-
-        _bitmap = bmp;
+        // 画像ファイルのロード
+        var bmp = await Task.Run(()=>ImageHelper.LoadImage96Dpi(path));
         ImageView.Source = bmp;
-        CanvasRoot.Width = bmp.PixelWidth;
-        CanvasRoot.Height = bmp.PixelHeight;
-
         /*
-        
-        double scale = 1200.0d / bmp.Height;
-        if (scale > 10.0) scale = 10.0;
-        if (scale < 0.1) scale = 0.1;
+        // 初期倍率
+        ImageView.RenderTransform  = new ScaleTransform(1.0, 1.0);  // 倍率1倍
+        // ImageとCanvasの解像度はセットで変更
+        CanvasRoot.Width  = ImageView.Source.Width;
+        CanvasRoot.Height = ImageView.Source.Height;
         */
-        double scale = 1.0;
+        double h = Grid0.ActualHeight;
+        double scale = h / bmp.PixelHeight;
+
         var st = new ScaleTransform(scale, scale);
-        ImageView.LayoutTransform = st;
-       
-        //Title = $"{scale}";
+        ImageView.RenderTransform = st;
+
+        CanvasRoot.Width = bmp.PixelWidth * scale;
+        CanvasRoot.Height = bmp.PixelHeight * scale;
+
+        ImageView.Tag = path;
+
+        string filename = System.IO.Path.GetFileName(path);
+        this.Title = $"{filename} W:{bmp.PixelWidth} H:{bmp.PixelHeight} Format:{bmp.Format}";
     }
 
     // 表示切替
     private void MaxSize_Click(object sender, RoutedEventArgs e)
     {
-        var st = new ScaleTransform(10.0, 10.0);
-        ImageView.LayoutTransform = st;
+        double scale = 10.0;
+
+        var st = new ScaleTransform(scale, scale);
+        ImageView.RenderTransform = st;
+
+        var bmp = ImageView.Source as BitmapSource;
+        if (bmp is null) return;
+        CanvasRoot.Width = bmp.PixelWidth * scale;
+        CanvasRoot.Height = bmp.PixelHeight * scale;
     }
     private void ActualSize_Click(object sender, RoutedEventArgs e)
     {
-        var st = new ScaleTransform(1.0, 1.0);
-        ImageView.LayoutTransform = st;
+        double scale = 1.0;
+
+        var st = new ScaleTransform(scale, scale);
+        ImageView.RenderTransform = st;
+
+        var bmp = ImageView.Source as BitmapSource;
+        if (bmp is null) return;
+        CanvasRoot.Width = bmp.PixelWidth * scale;
+        CanvasRoot.Height = bmp.PixelHeight * scale;
     }
-    private void MinSize_Click(object sender, RoutedEventArgs e)
+    private void FitSize_Click(object sender, RoutedEventArgs e)
     {
-        var st = new ScaleTransform(0.1, 0.1);
-        ImageView.LayoutTransform = st;
+        var bmp = ImageView.Source as BitmapSource;
+        if (bmp is null) return;
+
+        double h = Grid0.ActualHeight;
+        double scale = h / bmp.PixelHeight;
+
+        var st = new ScaleTransform(scale, scale);
+        ImageView.RenderTransform = st;
+
+        CanvasRoot.Width = bmp.PixelWidth * scale;
+        CanvasRoot.Height = bmp.PixelHeight * scale;
     }
 
     // クリップボード
@@ -139,3 +200,5 @@ public partial class MainWindow : Window
         });
     }
 }
+// mkdir C:\Users\karet\Tools\ImageLancher
+// dotnet build .\ImageLancher.csproj -c Release -o "C:\Users\karet\Tools\ImageLancher"

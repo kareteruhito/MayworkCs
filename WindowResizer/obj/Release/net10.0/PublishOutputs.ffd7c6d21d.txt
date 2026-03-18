@@ -1,0 +1,5 @@
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\publish\WindowResizer.exe
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\publish\WindowResizer.dll
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\publish\WindowResizer.deps.json
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\publish\WindowResizer.runtimeconfig.json
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\publish\WindowResizer.pdb

@@ -1,0 +1,15 @@
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\WindowResizer.exe
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\WindowResizer.deps.json
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\WindowResizer.runtimeconfig.json
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\WindowResizer.dll
+J:\git\MayworkCs\WindowResizer\bin\Release\net10.0\WindowResizer.pdb
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.GeneratedMSBuildEditorConfig.editorconfig
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.AssemblyInfoInputs.cache
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.AssemblyInfo.cs
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.csproj.CoreCompileInputs.cache
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.sourcelink.json
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.dll
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\refint\WindowResizer.dll
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.pdb
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\WindowResizer.genruntimeconfig.cache
+J:\git\MayworkCs\WindowResizer\obj\Release\net10.0\ref\WindowResizer.dll

@@ -1,0 +1,114 @@
+    <!-- MayworkTheme.xaml -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============================= -->
+    <!-- 基本単位（4px基準） -->
+    <!-- ============================= -->
+
+    <Thickness x:Key="SpacingSmall">4</Thickness>
+    <Thickness x:Key="SpacingNormal">8</Thickness>
+    <Thickness x:Key="SpacingLarge">16</Thickness>
+
+    <!-- ============================= -->
+    <!-- デフォルトフォント -->
+    <!-- ============================= -->
+    <Style TargetType="Control">
+        <Setter Property="FontFamily" Value="Yu Gothic UI"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+
+
+    <!-- ============================= -->
+    <!-- 共通コントロール -->
+    <!-- ============================= -->
+
+	<!-- Window -->
+	<Style TargetType="Window">
+		<Setter Property="Padding" Value="8"/>
+	</Style>
+	
+	<!-- TextBlock -->
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Yu Gothic UI"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <!-- Button -->
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="MinHeight" Value="28"/>
+    </Style>
+
+    <!-- TextBox -->
+    <Style TargetType="TextBox">
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Padding" Value="6,4"/>
+        <Setter Property="MinHeight" Value="26"/>
+    </Style>
+
+    <!-- Menu -->
+    <Style TargetType="Menu">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <!-- StatusBar -->
+    <Style TargetType="StatusBar">
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <!-- ScrollViewer -->
+    <Style TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+    </Style>
+
+	<!-- Grid -->
+	<Style TargetType="Grid">
+		<Setter Property="Margin" Value="8"/>
+	</Style>
+
+	<!-- StackPanel -->
+	<Style TargetType="StackPanel">
+		<Setter Property="Margin" Value="8"/>
+	</Style>
+
+	<!-- Panel -->
+	<Style TargetType="Panel">
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+
+	<!-- 特化コントロール -->
+
+	<!-- 水平スタックパネル -->
+	<Style x:Key="HorizontalStackPanel"
+       TargetType="StackPanel">
+    <Setter Property="Orientation" Value="Horizontal"/>
+	<!--
+	使い方
+		<StackPanel Style="{StaticResource HorizontalStackPanel}">
+			<Button Content="OK"/>
+			<Button Content="Cancel"/>
+		</StackPanel>
+	-->
+
+
+
+</Style>
+</ResourceDictionary>
+
+<!--
+// 使い方
+
+App.xaml
+<Application.Resources>
+	<ResourceDictionary>
+		<ResourceDictionary.MergedDictionaries>
+			<ResourceDictionary Source="Themes/MayworkTheme.xaml"/>
+		</ResourceDictionary.MergedDictionaries>
+	</ResourceDictionary>         
+</Application.Resources>
+-->

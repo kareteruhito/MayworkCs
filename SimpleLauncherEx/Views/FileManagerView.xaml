@@ -70,7 +70,7 @@
         <!-- 一覧 -->
         <ListView Grid.Row="2"
             x:Name="List"
-            Visibility="Collapsed"
+            Visibility="Visible"
             Margin="8"
             SelectionMode="Single">
             <ListView.ItemContainerStyle>
@@ -107,7 +107,7 @@
         <!-- サムネイル -->
         <ListView Grid.Row="2"
             x:Name="Thumb"
-            Visibility="Visible"
+            Visibility="Collapsed"
             Margin="8"
             SelectionMode="Single"
             ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -134,10 +134,10 @@
                         CornerRadius="6"
                         Background="Transparent"
                         Margin="5">
-                        <StackPanel Margin="5" Width="256">
+                        <StackPanel Margin="5" Width="512">
                             <Image
                                 Source="{Binding Thumb}"
-                                Width="256" Height="256"
+                                Width="512" Height="512"
                                 Stretch="UniForm" />
                             <TextBlock
                                 Text = "{Binding DisplayName}"

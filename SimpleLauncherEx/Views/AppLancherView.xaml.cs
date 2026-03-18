@@ -2,6 +2,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using Maywork.WPF.Helpers;
+using Maywork.Utilities;
 
 namespace SimpleLauncherEx.Views;
 
@@ -18,8 +19,27 @@ public partial class AppLancherView : UserControl, ITabView
 
         Wiring.AcceptFilesPreview(List, files =>
         {
-            State.SetFile(files[0]);
-        }, "exe"); 
+            var file = files.FirstOrDefault();
+            if (file is null) return;
+
+            var ext = System.IO.Path.GetExtension(file).ToLower();
+            if (ext == ".exe")
+            {
+                State.SetFile(file);
+                return;
+            }
+
+            var sc = ShortcutHelper.TryResolve(file);
+            if (sc is null) return;
+            var targetPath = sc.TargetPath;
+            if (targetPath is null) return;
+
+            var sext = System.IO.Path.GetExtension(targetPath).ToLower();
+            if (sext != ".exe") return;
+
+
+            State.SetFile(targetPath);
+        }, ".exe", ".lnk");
 
         Wiring.Hotkey(this, Key.Delete, ModifierKeys.None,
         () =>

@@ -7,6 +7,7 @@
         Height="1200">
 
     <Grid
+        x:Name="Grid0"
         Background="Black">
         <ScrollViewer x:Name="ScrollViewerRoot"
             HorizontalScrollBarVisibility="Auto"
@@ -17,7 +18,7 @@
                 </Canvas.Background>
                 <Image x:Name="ImageView"
                     Stretch="None"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    RenderOptions.BitmapScalingMode="Fant"><!-- NearestNeighbor -->
                     <Image.ContextMenu>
                         <ContextMenu
                             x:Name="ImageContextMenu">
@@ -28,8 +29,8 @@
                                 Header="原寸大で表示"
                                 Click="ActualSize_Click"/>
                             <MenuItem
-                                Header="最小で表示"
-                                Click="MinSize_Click"/>
+                                Header="フィットで表示"
+                                Click="FitSize_Click"/>
                             <Separator/>
                             <MenuItem
                                 Header="画像をコピー"

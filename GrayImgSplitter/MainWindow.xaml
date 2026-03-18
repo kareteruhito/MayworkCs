@@ -1,0 +1,127 @@
+﻿<Window x:Class="GrayImgSplitter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GrayImgSplitter"
+        xmlns:h="clr-namespace:Maywork.WPF.Helpers"
+        h:DisposeDataContextBehavior.Enable="True"
+        mc:Ignorable="d"
+        Title="{Binding Title.Value}" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- メニュー -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
+                <Separator/>
+            </MenuItem>
+        </Menu>
+        <!-- メイン -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="White">
+                    <ScrollViewer h:ImageScaleHelper.Enable="True">
+                        <Canvas>
+                            <Image Source="{Binding BlackImage.Value}" />
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="1" Background="White">
+                    <ScrollViewer h:ImageScaleHelper.Enable="True">
+                        <Canvas>
+                            <Image Source="{Binding GrayImage.Value}" />
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="2" Background="Gray">
+                    <ScrollViewer h:ImageScaleHelper.Enable="True">
+                        <Canvas>
+                            <Image Source="{Binding WhiteImage.Value}" />
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+
+            </Grid>
+
+            <GridSplitter
+                Grid.Column="1"
+                Style="{StaticResource HGridSplitterStyle}" />
+            
+            <Grid Grid.Column="2"
+                h:FileDropHelper.Enable="True"
+                h:FileDropHelper.DropCommand="{Binding FileDropCommand}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer Grid.Row="0" h:ImageScaleHelper.Enable="True">
+                    <Canvas>
+                        <Image Source="{Binding PreviewImage.Value}" />
+                    </Canvas>
+                </ScrollViewer>
+                <StackPanel Grid.Row="1" Margin="10" Orientation="Vertical" Width="300">
+
+                    <!-- 黒閾値 -->
+                    <TextBlock Text="Black Threshold" Margin="0,5"/>
+                    <DockPanel>
+                        <Slider
+                            Minimum="0"
+                            Maximum="255"
+                            Width="200"
+                            Value="{Binding BlackThreshold.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox
+                            Width="50"
+                            Margin="5,0,0,0"
+                            HorizontalContentAlignment="Right"
+                            Text="{Binding BlackThreshold.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+
+                    <!-- 白閾値 -->
+                    <TextBlock Text="White Threshold" Margin="0,10,0,5"/>
+                    <DockPanel>
+                        <Slider
+                            Minimum="0"
+                            Maximum="255"
+                            Width="200"
+                            Value="{Binding WhiteThreshold.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox
+                            Width="50"
+                            Margin="5,0,0,0"
+                            HorizontalContentAlignment="Right"
+                            Text="{Binding WhiteThreshold.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+
+                    <Button Content="実行" Margin="8" Command="{Binding ApplyCommand}" />
+                    <Button Content="保存" Margin="8" Command="{Binding SaveCommand}" />
+
+                </StackPanel>
+            </Grid>                
+        </Grid>
+        <!-- ステータスバー -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Ready"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+
+</Window>

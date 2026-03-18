@@ -24,7 +24,7 @@ static class ImageHelper
 
     public static BitmapSource CreateThumb(BitmapSource src)
     {
-        const int MaxSize = 256;
+        const int MaxSize = 512;
         const double Dpi = 96.0;
 
         // 縦横比維持スケール
@@ -63,7 +63,7 @@ static class ImageHelper
     {
         var encoder = new JpegBitmapEncoder
         {
-            QualityLevel = 85   // 0–100
+            QualityLevel = 100   // 0–100
         };
 
         encoder.Frames.Add(BitmapFrame.Create(bmp));

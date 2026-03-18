@@ -2,7 +2,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using Microsoft.VisualBasic;
-using MwLib.Utilities;
+using Maywork.WPF.Helpers;
 
 namespace ImageLancher;
 
@@ -26,9 +26,9 @@ public static class SettingsLoader
     {
         try
         {
-            string dir = AppPathUtil.Roaming;
+            string dir = AppPathHelpr.Roaming;
 
-            string path = AppPathUtil.SettingsFile;
+            string path = AppPathHelpr.SettingsFile;
 
             if (!File.Exists(path))
             {

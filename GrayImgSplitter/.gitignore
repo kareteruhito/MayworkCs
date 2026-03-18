@@ -1,0 +1,46 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# VSCode
+.vscode/
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Test results
+TestResults/
+
+# Publish
+publish/
+
+# Dotnet
+*.runtimeconfig.dev.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml

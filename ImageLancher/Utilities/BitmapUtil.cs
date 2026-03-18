@@ -1,7 +1,8 @@
+/*
 using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace MwLib.Utilities;
+namespace Maywork.Utilities;
 public static class BitmapUtil
 {    public static BitmapSource Load(
         string path,
@@ -39,3 +40,4 @@ public static class BitmapUtil
         int? decodePixelWidth = null)
         => await Task.Run(() => LoadStream(stream, decodePixelWidth));
 }
+*/

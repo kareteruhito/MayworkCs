@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:OpenCvFilterMaker2">
+
+    <!-- NonLocalMeansFilter用テンプレート -->
+    <DataTemplate DataType="{x:Type local:NonLocalMeansFilter}">
+        <StackPanel Margin="10">
+            <TextBlock Text="NonLocalMeansFilter Settings"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="H:"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                <TextBox Width="60"
+                            Text="{Binding H.Value}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="TemplateWindowSize:"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                <TextBox Width="60"
+                            Text="{Binding TemplateWindowSize.Value}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="SearchWindowSize:"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                <TextBox Width="60"
+                            Text="{Binding SearchWindowSize.Value}"/>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:OpenCvFilterMaker2">
+
+    <!-- Grayscale用テンプレート -->
+    <DataTemplate DataType="{x:Type local:GrayscaleFilter}">
+        <StackPanel Margin="10">
+            <TextBlock Text="GrayscaleFilter Settings"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+
+            <CheckBox Content="Force Clone If Gray"
+                      IsChecked="{Binding ForceCloneIfGray.Value}"
+                      Margin="0,0,0,5"/>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

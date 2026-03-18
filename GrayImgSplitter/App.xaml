@@ -1,0 +1,37 @@
+﻿<Application x:Class="GrayImgSplitter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GrayImgSplitter"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <!-- Menu / MenuItem -->
+        <Style TargetType="Menu">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding"  Value="0"/>
+            <Setter Property="Margin"   Value="0,0,0,4"/>
+        </Style>
+
+        <!-- StatusBar -->
+        <Style TargetType="StatusBar">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding"  Value="0"/>
+            <Setter Property="Margin"   Value="0,0,0,4"/>
+        </Style>
+
+        <!-- GridSplitter -->
+        <Style x:Key="HGridSplitterStyle" TargetType="GridSplitter">
+            <Setter Property="Width" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="ShowsPreview" Value="True"/>
+            <Setter Property="ResizeDirection" Value="Columns"/>
+        </Style>
+
+        <!-- TextBlock -->
+        <Style x:Key="CenterTextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+    </Application.Resources>
+</Application>
